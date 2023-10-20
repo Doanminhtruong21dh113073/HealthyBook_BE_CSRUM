@@ -4,6 +4,7 @@ const sequelize = new Sequelize("JoyDB", "root", "motmatkhaukhac", {
   host: "localhost",
   dialect: "mysql",
   logging: false,
+  port: 3307,
 });
 
 let connectDB = async () => {

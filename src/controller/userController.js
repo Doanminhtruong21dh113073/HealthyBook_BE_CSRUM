@@ -23,6 +23,8 @@ const handleLogin = async (req, res) => {
 const handleGetAllUsers = async (req, res) => {
   const id = req.query.id;
 
+  
+
   if (!id) {
     return res.status(400).json({
       errCode: 1,
@@ -61,10 +63,23 @@ let handleEditUser = async (req, res) => {
   return res.status(200).json(message);
 };
 
+let getAllCode = async (req, res) => {
+  try {
+    let data = await userService.getAllCodeService(req.query.type);
+    return res.status(200).json(data);
+  } catch (e) {
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: "Error drom server",
+    });
+  }
+};
+
 module.exports = {
   handleLogin: handleLogin,
   handleGetAllUsers: handleGetAllUsers,
   handleCreateNewUser: handleCreateNewUser,
   handleEditUser: handleEditUser,
   handleDeleteUser: handleDeleteUser,
+  getAllCode: getAllCode,
 };
